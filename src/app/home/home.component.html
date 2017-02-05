@@ -1,0 +1,23 @@
+<div class="container-fluid">
+  <div class="row">
+    <div *ngFor="let note of notesList; let i = index" class="col-md-3">
+        <div class="well well-sm" style="cursor:pointer" [routerLink]="['noteDetails', note.id]">{{note.name}}<span (click)="deleteNote($event, note, i)" class="glyphicon glyphicon-remove pull-right"></span></div>
+     </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">Add new note</div>
+          <div class="panel-body">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Note title</label>
+                <input type="text" class="form-control" id="noteTitle" #noteTitle placeholder="Note title">
+              </div>
+              <button class="btn btn-primary pull-right" (click)="addNewNote(noteTitle.value, noteTitle);">Add</button>
+          </div>
+        </div>
+     </div>
+  </div>
+</div>
+

@@ -1,0 +1,17 @@
+{
+  "name": "angular2-demo",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Ajay Ullal <ajayullal91@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
