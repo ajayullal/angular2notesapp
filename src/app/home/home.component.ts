@@ -16,15 +16,16 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.notesList = this.dataService.getNotesList();
 
-    for(let note of [{name: 'Note 1', id:1},{name: 'Note 2', id:2},{name: 'Note 3', id:3}]){
+    for(let note of [{name: 'Note 1', id:1, description: "This is note 1"},{name: 'Note 2', id:2, description: "This is note 2"},{name: 'Note 3', id:3, description: "This is note 3"}]){
         this.dataService.addNewNote(note);
-    }
+    } 
   }
 
-  addNewNote(noteTile, noteTitleElemnt){
+  addNewNote(noteTile, noteTitleElemnt, noteDesc, noteDescElemnt){
     if(noteTile){
       noteTitleElemnt.value = "";
-      this.dataService.addNewNote({name: noteTile, id: this.notesList[this.notesList.length - 1].id+1});
+      noteDescElemnt.value = "";
+      this.dataService.addNewNote({name: noteTile, id: this.notesList[this.notesList.length - 1].id+1, description: noteDesc});
     }
   }
 

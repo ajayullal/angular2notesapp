@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import {ActivatedRoute} from '@angular/router'
 import {Subscription} from 'rxjs/Rx'
+import {DataService} from '../shared/data.service'
 
 @Component({
   selector: 'ang2-note-details',
@@ -11,12 +12,17 @@ import {Subscription} from 'rxjs/Rx'
 export class NoteDetailsComponent implements OnInit, OnDestroy {
 
   subscription:Subscription;
+  note;
 
-  constructor(private activatedRoute:ActivatedRoute) { }
+  constructor(private activatedRoute:ActivatedRoute, private dataService:DataService) { }
 
   ngOnInit() {
     this.subscription = this.activatedRoute.params.subscribe((params:any)=>{
-      console.log(params.id);
+      this.dataService.getNotesList().forEach((note, index)=>{
+        if(note.id==params.id){
+           this.note = note;
+        }
+      });
     });
   }
 

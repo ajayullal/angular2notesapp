@@ -1,8 +1,20 @@
 <div class="container-fluid">
   <div class="row">
+    <div class="page-header">
+      <h2>Notes List</h2>
+    </div>
     <div *ngFor="let note of notesList; let i = index" class="col-md-3">
-        <div class="well well-sm" style="cursor:pointer" [routerLink]="['noteDetails', note.id]">{{note.name}}<span (click)="deleteNote($event, note, i)" class="glyphicon glyphicon-remove pull-right"></span></div>
-     </div>
+          <div class="thumbnail">
+            <div class="caption">
+              <h4>{{note.name}}</h4>
+              <p>{{note.description}}</p>
+              <p class="clearfix">
+                <button [routerLink]="['noteDetails', note.id]" class="btn btn-primary pull-left">Open</button> 
+                <button (click)="deleteNote($event, note, i)" class="btn btn-default pull-right">Delete</button>
+              </p>
+            </div>
+          </div>
+      </div>
   </div>
 
   <div class="row">
@@ -14,7 +26,11 @@
                 <label for="exampleInputEmail1">Note title</label>
                 <input type="text" class="form-control" id="noteTitle" #noteTitle placeholder="Note title">
               </div>
-              <button class="btn btn-primary pull-right" (click)="addNewNote(noteTitle.value, noteTitle);">Add</button>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Note description</label>
+                <input type="text" class="form-control" #noteDesc placeholder="Note description">
+              </div>
+              <button class="btn btn-primary pull-right" (click)="addNewNote(noteTitle.value, noteTitle, noteDesc.value, noteDesc);">Add</button>
           </div>
         </div>
      </div>
